@@ -11,7 +11,7 @@ SWITCH1 = 24
 GPIO.setup(SWITCH1, GPIO.IN)
 SWITCH4 = 25
 GPIO.setup(SWITCH4, GPIO.IN)
-PRINT = 22
+PRINTIT = 22
 GPIO.setup(PRINT, GPIO.IN)
 
 
@@ -47,5 +47,4 @@ while True:
 		print("Bitte warten, Photo wird gedruckt...")
 	
 	i = 1
-	
-	
+
