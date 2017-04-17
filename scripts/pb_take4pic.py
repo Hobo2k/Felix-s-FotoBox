@@ -7,18 +7,18 @@ i = 1
 
 # GPIO setup
 GPIO.setmode(GPIO.BOARD)
-SWITCH1 = 18
+SWITCH1 = 15
 GPIO.setup(SWITCH1, GPIO.IN)
-SWITCH4 = 16
+SWITCH4 = 18
 GPIO.setup(SWITCH4, GPIO.IN)
-PRINTIT = 15
+PRINTIT = 16
 GPIO.setup(PRINTIT, GPIO.IN)
 
-LED1 = 35	# A
-LED2 = 33	# B
-LED4 = 31	# C
-LED8 = 29	# D
-LEDAUS = 37	# BI
+LED1 = 29	# A
+LED2 = 37	# B
+LED4 = 35	# C
+LED8 = 31	# D
+LEDAUS = 33	# BI
 
 GPIO.setup(LED1, GPIO.OUT)
 GPIO.setup(LED2, GPIO.OUT)
@@ -43,7 +43,7 @@ GPIO.setup(LEDAUS, GPIO.OUT)
 
 
 def output_num(num):
-	A,B,C,D=bin(num+16)[-4:]
+	D,C,B,A=bin(num+16)[-4:]
 	if A=='1':
 		GPIO.output(LED1,1)
 	else:
