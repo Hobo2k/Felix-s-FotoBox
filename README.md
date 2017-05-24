@@ -25,13 +25,18 @@ Und natürlich das gphoto:
 
 
 Damit das ganze Automtisch startet füge ich mit `sudo vi /etc/rc.local` (Ich bin ein VI Kind, der Nano geht aber auch ;-) ) in die rc.local folgendes vor dem `exit 0` folgendes ein:
-> su felix -c 'screen -S foto -d -m python ~/fotobox/scripts/pb_take4pic.py'
+> su - felix -c 'screen -S foto -d -m python ~/fotobox/scripts/pb_take4pic.py'
 
 Statt felix müsst ihr euren PI Usernamen verwenden.
-
 Damit wird eine deattached Screen Session gestartet und mein FotoBox Script direkt gestartet.
+
+Ebenso ist es mit der aktualisierung der Webgallery. Hier müsst ihr mittels
+> crontab -e
+folgende Zeile einfügen. Dann wird die Gallery alle 5 Minuten neu gebaut.
+> */5 * * * *     /home/felix/fotobox/scripts/gallery.sh
+
 
 
 Folgende ToDos gibt es noch:
-- Einbau Countdown für eine 8-Segment Anzeige
 - Drucken mit CUPS auf Photopapier
+- Livescreen
