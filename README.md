@@ -32,9 +32,12 @@ Damit wird eine deattached Screen Session gestartet und mein FotoBox Script dire
 
 Ebenso ist es mit der aktualisierung der Webgallery. Hier müsst ihr mittels
 > crontab -e
-folgende Zeile einfügen. Dann wird die Gallery alle 5 Minuten neu gebaut.
-> */5 * * * *     /home/felix/fotobox/scripts/gallery.sh
 
+folgende Zeile einfügen. Dann wird die Gallery alle 5 Minuten neu gebaut.
+> */5 * * * *     /home/felix/fotobox/scripts/gallery.sh "FotoBox"
+
+
+Die Datei `gallery.sh` im Verzeichnis scripts muss auch entsprechend mit dem Usernamen angepasst werden.
 
 
 Folgende ToDos gibt es noch:
