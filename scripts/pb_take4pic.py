@@ -74,8 +74,11 @@ while True:
 		print("Jetzt druck gestartet!")
 	if (GPIO.input(SWITCH4)==GPIO.LOW):
 		while (i<5):
-			countdown(5)
+			t = threading.Thread(target=countdown, args=(5,))
+			t.start()
+			time.sleep(4.3)
 			gpout4 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep-raw", stderr=subprocess.STDOUT, shell=True)
+			t.join()
 			print(gpout4)
 			GPIO.output(LEDAUS,0)
 			if "ERROR" not in gpout4: 
@@ -84,8 +87,11 @@ while True:
 		print("Bitte warten, Collage wird gedruckt...")
 
 	if (GPIO.input(SWITCH1)==GPIO.LOW):
-		countdown(5)
+		t = threading.Thread(target=countdown, args=(5,))
+		t.start()
+		time.sleep(4.3)
 		gpout1 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep-raw", stderr=subprocess.STDOUT, shell=True)
+		t.join()
 		print(gpout1)
 		GPIO.output(LEDAUS,0)
 		subprocess.call("~/fotobox/scripts/pb_assemble_and_print.sh", shell=True)
