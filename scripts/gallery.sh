@@ -89,10 +89,10 @@ rm -f polaroid.png small.png
 
 
 # Create zipfile of all pics
-if [ ! -f "$zipfile" ]
-then
-   zip "$zipfile" $(ls | egrep "jpg$|jpeg$" | grep -v thumb)
-fi
+#if [ ! -f "$zipfile" ]
+#then
+#   zip "$zipfile" $(ls | egrep "jpg$|jpeg$" | grep -v thumb)
+#fi
 
 
 
