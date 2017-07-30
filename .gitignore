@@ -1,3 +1,6 @@
 # ignore all pictures
 *.jpg
 *~
+PB*.txt
+index.html
+*.zip

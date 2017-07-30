@@ -27,6 +27,10 @@ GPIO.setup(LED4, GPIO.OUT)
 GPIO.setup(LED8, GPIO.OUT)
 GPIO.setup(LEDAUS, GPIO.OUT)
 
+f = file('printit.txt', 'w')
+f.write('0')
+f.close()
+
 
 #LED Matrix  -  der Dezimalpunkt ist noch nicht implementiert
 #(a,b,c,d,e,f,g)
@@ -71,6 +75,7 @@ def countdown(count):
 		
 while True:
 	if (GPIO.input(PRINTIT)==GPIO.LOW):
+		subprocess.call("~/fotobox/scripts/pb_printit.sh", shell=True)
 		print("Jetzt druck gestartet!")
 	if (GPIO.input(SWITCH4)==GPIO.LOW):
 		while (i<5):
