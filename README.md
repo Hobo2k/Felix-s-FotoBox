@@ -39,7 +39,9 @@ folgende Zeile einfügen. Dann wird die Gallery alle 5 Minuten neu gebaut.
 
 Die Datei `gallery.sh` im Verzeichnis scripts muss auch entsprechend mit dem Usernamen angepasst werden.
 
+Wenn das Bild erstellt ist, kann man es einmal drucken. Wenn ein Neues Bild aufgenommen ist, ist es vorbei.
+
 
 Folgende ToDos gibt es noch:
-- Drucken mit CUPS auf Photopapier
+- Bild zeigen, um es vor dem Druck zu kontrollieren
 - Livescreen

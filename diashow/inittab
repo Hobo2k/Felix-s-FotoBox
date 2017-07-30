@@ -1,0 +1,2 @@
+1:2345:respawn:/bin/login -f fotobox tty1 </dev/tty1 >/dev/tty 2>&1
+
