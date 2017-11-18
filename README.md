@@ -1,7 +1,7 @@
 # Felix's FotoBox
 Meine FotoBox für Feierlichkeiten und Spaß
 
-##Installation
+## Installation
 
 Für die Installation müssen folgende Verzeichnisse im Home (~/) Verzeichnis angelegt werden:
 * mkdir ~/fotobox/
@@ -75,7 +75,10 @@ Anschließend wird mittels `incrontab -e` den Befehl eintragen, dass wenn es ein
 Nun einen Reboot durchführen und schauen ob es geht.
 Fertig. Wenn jetzt eine neue Datei erstellt wird, wird der fotobox User ausgeloggt, loggt sich automatisch wieder ein und lädt das letzte Bild.
 
-
+## genaue Uhrzeit / Zeitstempel
+Ich habe übrigens noch ein RTC Modul an der Fotobox verbaut, dass auch wenn ich kein WLAN habe (wie meistens) die Zeitstempel der Box passen.
+Wo es das Modul gibt und wie ihr es installiert, könnt ihr anderweitig nachlesen. Ein Bild gibt es dann im Blog :-)
+Zum Googeln oder Bingen einfach mal *Raspberry PI RTC* oder *DS3231* suchen. RTC steht für Real Tme Clock.
 
 ## Folgende ToDos gibt es noch:
 - Livescreen

@@ -27,7 +27,7 @@ GPIO.setup(LED4, GPIO.OUT)
 GPIO.setup(LED8, GPIO.OUT)
 GPIO.setup(LEDAUS, GPIO.OUT)
 
-f = file('printit.txt', 'w')
+f = file('/home/felix/fotobox/scripts/printit.txt', 'w')
 f.write('0')
 f.close()
 
@@ -82,7 +82,7 @@ while True:
 			t = threading.Thread(target=countdown, args=(7,))
 			t.start()
 			time.sleep(6.3)
-			gpout4 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep-raw", stderr=subprocess.STDOUT, shell=True)
+			gpout4 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep", stderr=subprocess.STDOUT, shell=True)
 			t.join()
 			print(gpout4)
 			GPIO.output(LEDAUS,0)
@@ -95,7 +95,7 @@ while True:
 		t = threading.Thread(target=countdown, args=(7,))
 		t.start()
 		time.sleep(6.3)
-		gpout1 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep-raw", stderr=subprocess.STDOUT, shell=True)
+		gpout1 = subprocess.check_output("gphoto2 --capture-image-and-download --filename ~/fotobox/photobooth_images/photobooth_%Y%m%d_%H%M%S_" + str(i) +".jpg --keep", stderr=subprocess.STDOUT, shell=True)
 		t.join()
 		print(gpout1)
 		GPIO.output(LEDAUS,0)
@@ -103,4 +103,5 @@ while True:
 		print("Bitte warten, Photo wird gedruckt...")
 	
 	i = 1
+	time.sleep(0.2)
 
