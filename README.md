@@ -1,6 +1,8 @@
 # Felix's FotoBox
 Meine FotoBox für Feierlichkeiten und Spaß
 
+##Installation
+
 Für die Installation müssen folgende Verzeichnisse im Home (~/) Verzeichnis angelegt werden:
 * mkdir ~/fotobox/
 * mkdir ~/fotobox/photobooth_images/
@@ -42,6 +44,38 @@ Die Datei `gallery.sh` im Verzeichnis scripts muss auch entsprechend mit dem Use
 Wenn das Bild erstellt ist, kann man es einmal drucken. Wenn ein Neues Bild aufgenommen ist, ist es vorbei.
 
 
-Folgende ToDos gibt es noch:
-- Bild zeigen, um es vor dem Druck zu kontrollieren
+Nun wird immer das letzte Bild betrachtet. Dazu müsst ihr incron und fbi installieren:
+> sudo apt-get install incron fbi
+und einen neuen User anlegen:
+> useradd -m fotobox
+in dessen homeverzeichnis kommen folgende Dateien aus dem scripts Ordner:
+* frame.sh
+* re_login.sh
+und geben die Berechtigung mit
+> chmod +x /home/fotobox/re_login.sh
+> chmod +x /home/fotobox/frame.sh
+> chown fotobox /home/fotobox/re_login.sh /home/fotobox/frame.sh
+an den User. Anschließend loggen wir uns als fotobox User ein:
+> sudo su - fotobox
+
+Jetzt müssen wir einstellen, dass die Fotoshow beim Login geladen wird.
+Dazu fügen wir ans Ende der `.profile` Datei folgende Zeile an:
+> /home/fotobox/frame.sh
+
+Nun loggen wir uns als fotobox wieder aus und arbeiten als normaluser weiter.
+Dazu muss der User fotobox dann zugriff auf das FrameBufferInterface erhalten und wir führen ein `sudo adduser fotobox video`aus.
+
+Dass der User fotobox automatisch eingeloggt wird, wird in der `/etc/inittab` eingetragen. Dass müssen wir wieder mit sudo machen und tragen die Zeile ein:
+> 1:2345:respawn:/bin/login -f fotobox tty1 </dev/tty1 >/dev/tty 2>&1
+
+Dann die User, die incron verwenden dürfen, mittels root/sudo in die Datei `/etc/incron.allow` eintragen. Jeweils ein User pro Zeile.
+Anschließend wird mittels `incrontab -e` den Befehl eintragen, dass wenn es eine neue Datei gibt, diese auch hinten angezeigt wird. Bei mir sieht es dann so aus:
+> /home/felix/fotobox/PB_archive IN_CREATE sudo /home/fotobox/re_login.sh
+
+Nun einen Reboot durchführen und schauen ob es geht.
+Fertig. Wenn jetzt eine neue Datei erstellt wird, wird der fotobox User ausgeloggt, loggt sich automatisch wieder ein und lädt das letzte Bild.
+
+
+
+## Folgende ToDos gibt es noch:
 - Livescreen
